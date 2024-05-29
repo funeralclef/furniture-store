@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Select, SimpleGrid, Text, VStack, Button, Input, Image, Center, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { useCart } from './CartContext';
+import { useCart } from '../cart/CartContext';
 import { FiShoppingCart } from "react-icons/fi";
 import { SearchIcon } from '@chakra-ui/icons';
 

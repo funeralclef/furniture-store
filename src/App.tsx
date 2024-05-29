@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Box, VStack, ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { CartProvider } from './components/CartContext';
-import { Header } from './components/Header';
-import { Home } from './components/Home';
-import { Footer } from './components/Footer';
+import { CartProvider } from './components/cart/CartContext';
+import { Header } from './components/elements/Header';
+import { Home } from './components/elements/Home';
+import { Footer } from './components/elements/Footer';
 import "./index.css"
 import { color } from 'framer-motion';
 

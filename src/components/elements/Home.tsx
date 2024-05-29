@@ -6,8 +6,9 @@ import {
 } from '@chakra-ui/react';
 import { MdCall } from 'react-icons/md';
 import { BiMailSend } from "react-icons/bi";
-import { FurnitureStore } from './FurnitureStore';
-import { FurnitureBuilder } from './FurnitureBuilder';
+import { FurnitureStore } from '../store/FurnitureStore';
+import { FurnitureBuilder } from '../store/FurnitureBuilder';
+
 
 export const Home: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -5,7 +5,7 @@ import {
   AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter,
   useToast
 } from '@chakra-ui/react';
-import { useCart } from './CartContext';
+import { useCart } from '../cart/CartContext';
 import { FiShoppingCart } from "react-icons/fi";
 
 export const FurnitureBuilder: React.FC = () => {

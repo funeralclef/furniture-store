@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Flex, Text, Link, Image, Button, VStack, IconButton, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { useCart } from './CartContext';
-import { CartModal } from './CartModal';
+import { useCart } from '../cart/CartContext';
+import { CartModal } from '../cart/CartModal';
 import logo from './logo.png';
 
 export const Header: React.FC = () => {
