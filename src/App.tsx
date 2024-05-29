@@ -4,8 +4,8 @@ import { CartProvider } from './components/cart/CartContext';
 import { Header } from './components/elements/Header';
 import { Home } from './components/elements/Home';
 import { Footer } from './components/elements/Footer';
-import "./index.css"
-import { color } from 'framer-motion';
+import { AuthProvider } from './components/account/AuthContext';
+import "./index.css";
 
 // Extend the theme to include custom colors, fonts, etc.
 const theme = extendTheme({
@@ -18,16 +18,16 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      50: '#000000',
+      50: '#f7fafc',
       100: '#1f1f1f',
-      200: '#ffffff',
-      300: '#999999',
-      400: '#c71218',
-      500: '#1c1c1c',
-      600: '#c7c7c7',
-      700: '#006ba1',
-      800: '#005885',
-      900: '#003f5e',
+      200: '#2d3748',
+      300: '#4a5568',
+      400: '#718096',
+      500: '#1a202c',
+      600: '#2d3748',
+      700: '#4a5568',
+      800: '#2d3748',
+      900: '#171923',
     },
   },
 });
@@ -35,15 +35,17 @@ const theme = extendTheme({
 const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme}>
-      <CartProvider>
-        <VStack spacing={10}>        
-          <Box width="full" maxW="1050px" mx="auto" px={4} >
-          <Header />
-            <Home /> 
-              <Footer/>
-          </Box>
-        </VStack>    
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <VStack spacing={10}>
+            <Box width="full" maxW="1050px" mx="auto" px={4}>
+              <Header />
+              <Home />
+              <Footer />
+            </Box>
+          </VStack>
+        </CartProvider>
+      </AuthProvider>
     </ChakraProvider>
   );
 };
