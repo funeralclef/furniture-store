@@ -5,7 +5,9 @@ import { Header } from './components/elements/Header';
 import { Home } from './components/elements/Home';
 import { Footer } from './components/elements/Footer';
 import { AuthProvider } from './components/account/AuthContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./index.css";
+import AdminPanel from './components/admin/AdminPanel';
 
 // Extend the theme to include custom colors, fonts, etc.
 const theme = extendTheme({
@@ -35,17 +37,23 @@ const theme = extendTheme({
 const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme}>
-      <AuthProvider>
-        <CartProvider>
-          <VStack spacing={10}>
-            <Box width="full" maxW="1050px" mx="auto" px={4}>
-              <Header />
-              <Home />
-              <Footer />
-            </Box>
-          </VStack>
-        </CartProvider>
-      </AuthProvider>
+      <Router>
+        <AuthProvider>
+          <CartProvider>
+            <VStack spacing={10}>
+              <Box width="full" maxW="1050px" mx="auto" px={4}>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/admin" element={<AdminPanel />} />
+                  {/* Add other routes here */}
+                </Routes>
+                <Footer />
+              </Box>
+            </VStack>
+          </CartProvider>
+        </AuthProvider>
+      </Router>
     </ChakraProvider>
   );
 };

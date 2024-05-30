@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   Box, Flex, Text, Link, Image, Button, VStack, IconButton, Menu,
@@ -6,14 +5,12 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { useCart } from '../cart/CartContext';
+import { useAuth } from '../account/AuthContext';
+import { Link as RouterLink } from 'react-router-dom';
 
 import logo from './logo.png';
 import { CartModal } from '../cart/CartModal';
-import { AdminPanelModal } from '../account/AdminPanelModal';
-import { useAuth } from '../account/AuthContext';
 import { LoginModal } from '../account/LoginModal';
-import { OrdersModal } from '../account/OrdersModal';
-import { ProfileModal } from '../account/ProfileModal';
 
 export const Header: React.FC = () => {
   const { items } = useCart();
@@ -26,12 +23,9 @@ export const Header: React.FC = () => {
         Кабінет
       </MenuButton>
       <MenuList>
-        <ProfileModal />
-
-        {user.role === 'user' && <OrdersModal />}
-
-        {user.role === 'admin' && <AdminPanelModal />}
-
+        <MenuItem as={RouterLink} to="/profile">Профіль</MenuItem>
+        {user.role === 'user' && <MenuItem as={RouterLink} to="/orders">Замовлення</MenuItem>}
+        {user.role === 'admin' && <MenuItem as={RouterLink} to="/admin">Панель адміністратора</MenuItem>}
         <MenuItem onClick={() => { logout(); onClose(); }}>Вихід</MenuItem>
       </MenuList>
     </Menu>
@@ -48,16 +42,16 @@ export const Header: React.FC = () => {
         </Flex>
 
         <Flex justify="center" flexGrow={1} display={{ base: 'none', md: 'flex' }} mx={4}>
-          <Link href="/" px={3} fontWeight="semibold">
+          <Link as={RouterLink} to="/" px={3} fontWeight="semibold">
             Головна
           </Link>
-          <Link href="/info" px={3} fontWeight="semibold">
+          <Link as={RouterLink} to="/info" px={3} fontWeight="semibold">
             Інформація
           </Link>
-          <Link href="/furniture" px={3} fontWeight="semibold">
+          <Link as={RouterLink} to="/furniture" px={3} fontWeight="semibold">
             Меблі
           </Link>
-          <Link href="/builder" px={3} fontWeight="semibold">
+          <Link as={RouterLink} to="/builder" px={3} fontWeight="semibold">
             Конструктор
           </Link>
         </Flex>
@@ -66,18 +60,10 @@ export const Header: React.FC = () => {
           <Menu>
             <MenuButton as={IconButton} icon={<HamburgerIcon />} variant="outline" aria-label="Options" />
             <MenuList>
-              <MenuItem as={Link} href="/">
-                Головна
-              </MenuItem>
-              <MenuItem as={Link} href="/info">
-                Інформація
-              </MenuItem>
-              <MenuItem as={Link} href="/furniture">
-                Меблі
-              </MenuItem>
-              <MenuItem as={Link} href="/builder">
-                Конструктор
-              </MenuItem>
+              <MenuItem as={RouterLink} to="/">Головна</MenuItem>
+              <MenuItem as={RouterLink} to="/info">Інформація</MenuItem>
+              <MenuItem as={RouterLink} to="/furniture">Меблі</MenuItem>
+              <MenuItem as={RouterLink} to="/builder">Конструктор</MenuItem>
             </MenuList>
           </Menu>
         </Box>
